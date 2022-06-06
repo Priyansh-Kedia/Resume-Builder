@@ -1,0 +1,105 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+</head>
+
+<body>
+  {% csrf_token %}
+  <body id="inhf">
+    <div data-tabs="1" id="iln8">
+      <nav data-tab-container="1" class="tab-container" id="ixnu"><a href="#tab1" data-tab="1" class="tab"
+          id="i80e">Profile<br /></a><a href="#tab2" data-tab="1" class="tab" id="iz3q">Education</a><a href="#tab3"
+          data-tab="1" class="tab" id="i37i">Work</a><a href="#ir4oh" data-tab="1" id="i01xf" class="tab">Skills</a><a
+          href="#i00xr" data-tab="1" id="i3j6e" class="tab">Projects</a><a href="#i4aik" data-tab="1" id="itc1f"
+          class="tab">Awards</a></nav>
+      <div id="tab1" data-tab-content="1" class="tab-content">
+        <form class="form">
+          <div class="form-group" id=""><label class="label" id="i9yye">Full Name</label><input
+              placeholder="Type here your name" id="full_name" class="input" /></div>
+          <div class="form-group"><label class="label" id="iefhv">Email</label><input id="email"
+              placeholder="Type here your name" class="input" /></div>
+          <div class="form-group" ><label class="label" id="ique5">Phone Number</label><input id="phone_number"
+              placeholder="Type here your name" class="input" /></div>
+          <div class="form-group"><label class="label" >Link</label><input type="email" id="link"
+              placeholder="Type here your email" class="input" id="iuq5t" /></div>
+          <div class="form-group"></div>
+          <div class="form-group"></div><button class="button" id="next_profile" onclick="updateProfile()">Next</button>
+        </form>
+      </div>
+      <div id="tab2" data-tab-content="1" class="tab-content">
+        <div>Tab 2 Content</div>
+        <form class="form" id="iuuzj">
+          <div class="form-group" id="ioafv"><label class="label" id="i2lvj">School Name</label><input
+              placeholder="Type here your name" class="input" id="iuz9h" /></div>
+          <div class="form-group" id="i3n7q"><label class="label" id="i5gaw">School Location</label><input type="email"
+              placeholder="Type here your email" class="input" id="ifp8x" /></div>
+          <div class="form-group" id="ihdd7"><label class="label" id="iogd1">Degree</label><input type="email"
+              placeholder="Type here your email" class="input" id="ii7zz" /></div>
+          <div class="form-group" id="iie0i"><label class="label" id="iyj8x">Major</label><input type="email"
+              placeholder="Type here your email" class="input" id="idr0i" /></div>
+          <div class="form-group" id="i9q7j"><label class="label" id="ichyu">GPA</label><input type="email"
+              placeholder="Type here your email" class="input" id="id4xh" /></div>
+          <div class="form-group" id="ij8sl"><label class="label" id="icedu">Start Date</label><input type="email"
+              placeholder="Type here your email" class="input" id="iar01" /></div>
+          <div class="form-group" id="idvmu"><label class="label" id="i6azk">End Date</label><input type="email"
+              placeholder="Type here your email" class="input" id="i0h7k" /></div>
+          <button class="button" id="add_ed">Add</button>
+          <div class="form-group"></div>
+          <div class="form-group"></div><button id="next_ed" class="button">Next</button>
+        </form>
+      </div>
+      <div id="tab3" data-tab-content="1" class="tab-content">
+        <div>Tab 3 Content</div>
+      </div>
+      <div data-tab-content="1" id="i4aik" class="tab-content">
+        <div>New Tab Content</div>
+      </div>
+      <div data-tab-content="1" id="i00xr" class="tab-content">
+        <div>New Tab Content</div>
+      </div>
+      <div data-tab-content="1" id="ir4oh" class="tab-content">
+        <div>New Tab Content</div>
+      </div>
+    </div>
+  </body>
+  <script>var items = document.querySelectorAll('#iln8');
+    for (var i = 0, len = items.length; i < len; i++) {
+      (function () {
+        var t, e = this, a = "[data-tab]", n = document.body, r = n.matchesSelector || n.webkitMatchesSelector || n.mozMatchesSelector || n.msMatchesSelector, o = function () { var a = e.querySelectorAll("[data-tab-content]") || []; for (t = 0; t < a.length; t++)a[t].style.display = "none" }, i = function (n) { var r = e.querySelectorAll(a) || []; for (t = 0; t < r.length; t++) { var i = r[t], s = i.className.replace("tab-active", "").trim(); i.className = s } o(), n.className += " tab-active"; var l = n.getAttribute("href"), c = e.querySelector(l); c && (c.style.display = "") }, s = e.querySelector(".tab-active" + a); s = s || e.querySelector(a), s && i(s), e.addEventListener("click", function (t) { var e = t.target; r.call(e, a) && i(e) })
+      }.bind(items[i]))();
+    }
+
+  </script>
+
+  <script>
+    function updateProfile() {
+      event.preventDefault()
+      let data = {
+        'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),
+        'name': document.getElementById("full_name").value,
+        'email': document.getElementById("email").value,
+        'phone_number': document.getElementById("phone_number").value,
+        'link': document.getElementById("link").value
+      }
+
+      console.log(data)
+    }
+  </script>
+
+</body>
+<html>
